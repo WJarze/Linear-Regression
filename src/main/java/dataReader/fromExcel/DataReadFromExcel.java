@@ -21,7 +21,10 @@ public class DataReadFromExcel {
         this.fis = fis;
         this.wb = wb;
     }
-
+    private XSSFSheet getSheet() {
+        XSSFSheet sheet = wb.getSheetAt ( 0 );     //creating a Sheet object to retrieve object
+        return sheet;
+    }
     //creating Workbook instance that refers to .xlsx file
     public void readExcel(Points points) {
         try {
@@ -53,11 +56,6 @@ public class DataReadFromExcel {
         } catch (Exception e) {
             e.printStackTrace ( );
         }
-    }
-
-    private XSSFSheet getSheet() {
-        XSSFSheet sheet = wb.getSheetAt ( 0 );     //creating a Sheet object to retrieve object
-        return sheet;
     }
 
     private static double cellReader(Iterator<Cell> cellIterator) {

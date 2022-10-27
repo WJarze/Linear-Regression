@@ -2,10 +2,8 @@ package model;
 
 import data.Points;
 import dataReader.fromExcel.DataReadFromExcel;
-//import DataReaderFromFile;
 import dataReader.fromFile.DataReaderFromFile;
 import dataReader.fromFile.ImportData;
-
 
 public class Regression {
     private DataReaderFromFile dataReader;

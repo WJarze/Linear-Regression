@@ -10,7 +10,6 @@ public class FromFileTest {
     @BeforeEach
     void setUp() {
         //when
-
         file = new File ( "data.txt" );
     }
     @Test
