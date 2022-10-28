@@ -4,7 +4,6 @@ import data.Point;
 import data.Points;
 import java.util.NoSuchElementException;
 
-
 public class Sum {
 
     public double getSumX(Points points) {
