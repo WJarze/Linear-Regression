@@ -21,4 +21,4 @@ excel:
 ####
 
 ## Future
-Adding more regression methods and suggesting an appropriate regression method based on the correlation coefficient. Visualize data in charts.
+Adding more regression methods and suggesting an appropriate regression method based on the determination coefficient. Visualize data in charts.
