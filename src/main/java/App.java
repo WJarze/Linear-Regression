@@ -15,5 +15,7 @@ public class App {
             manager.choiceImportAndCalculate ( );
             isAvailable = true;
         }while(isAvailable);
+
+
     }
 }

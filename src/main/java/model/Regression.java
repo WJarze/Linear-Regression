@@ -8,7 +8,9 @@ import dataReader.fromFile.ImportData;
 public class Regression {
     private DataReaderFromFile dataReader;
     private DataReadFromExcel dataReaderExcel;
-    Sum sum = new Sum ( );
+    private final Sum sum = new Sum ( );
+    private final ImportData importData = new ImportData ( );
+
 
     public Regression(DataReaderFromFile dataReader) {
         this.dataReader = dataReader;
@@ -18,7 +20,6 @@ public class Regression {
         this.dataReaderExcel = dataReaderExcel;
     }
 
-    private ImportData importData = new ImportData ( );
 
     public void addPointToList(Points points) {
         importData.addPointToList ( points , dataReader );
@@ -44,27 +45,32 @@ public class Regression {
         return sum.getSumX2 ( points );
     }
 
+    public double avgY(Points points) {
+        return sum.getAvgY ( points );
+    }public double avgX(Points points) {
+        return sum.getAvgX ( points );
+    }
+
     private double slope(Points points) {
-        return (((sumY ( points )) * (sumX ( points )) / points.list.size ( )) - sumXY ( points ))
-                / (((sumX ( points ) * sumX ( points )) / points.list.size ( )) - sumX2 ( points ));
+        return (((sumY ( points )) * avgX( points)) - sumXY ( points ))
+                / (((sumX ( points ) * avgX( points))) - sumX2 ( points ));
     }
 
     private double intercept(Points points) {
-        return (sumY ( points ) - slope ( points ) * sumX ( points )) / points.list.size ( );
+        return avgY ( points ) - slope ( points ) * avgX( points);
     }
 
     private double getR2(Points points) {
         double num = 0;
         double den = 0;
-        double avgY = sumY ( points ) / points.list.size ( );
-
         for (int i = 0; i < points.list.size ( ); i++) {
             num += Math.pow ( (points.list.get ( i ).getY ( )
                     - (points.list.get ( i ).getX ( ) * slope ( points ) + intercept ( points ))) , 2 );
-            den += Math.pow ( (points.list.get ( i ).getY ( ) - avgY) , 2 );
+            den += Math.pow ( (points.list.get ( i ).getY ( ) - avgY ( points )) , 2 );
         }
         return 1 - (num / den);
     }
+
 
     public void show(Points points) {
         String slope = String.format ( "%.4f" , slope ( points ) );
@@ -73,8 +79,6 @@ public class Regression {
         System.out.println ( "regression equation " + slope + " * X " + intercept );
         System.out.println ( "Correlation coefficient " + r2 );
     }
-
-
 }
 
 
