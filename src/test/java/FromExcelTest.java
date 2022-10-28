@@ -9,7 +9,6 @@ public class FromExcelTest {
 
     @Test
     void shouldFailBecauseFileNotExist() {
-
         //given
         boolean bool = !file.exists ( );
         //then

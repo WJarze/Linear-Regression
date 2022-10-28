@@ -44,7 +44,7 @@ public class Sum {
                     .average ( )
                     .getAsDouble ( );
         } catch (NoSuchElementException e) {
-            System.out.println ("empty text file");
+            System.out.println ("empty file");
         }
         return avgY;
     }
@@ -58,7 +58,7 @@ public class Sum {
                     .average ( )
                     .getAsDouble ( );
         } catch (NoSuchElementException e) {
-            System.out.println ("empty text file");
+            System.out.println ("empty file");
         }
         return avgX;
     }
