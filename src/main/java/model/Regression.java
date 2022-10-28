@@ -47,7 +47,8 @@ public class Regression {
 
     public double avgY(Points points) {
         return sum.getAvgY ( points );
-    }public double avgX(Points points) {
+    }
+    public double avgX(Points points) {
         return sum.getAvgX ( points );
     }
 
@@ -77,7 +78,7 @@ public class Regression {
         String intercept = String.format ( "%.4f" , intercept ( points ) );
         String r2 = String.format ( "%.4f" , getR2 ( points ) );
         System.out.println ( "regression equation " + slope + " * X " + intercept );
-        System.out.println ( "Correlation coefficient " + r2 );
+        System.out.println ( "coefficient of determination " + r2 );
     }
 }
 
