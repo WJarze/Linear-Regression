@@ -11,7 +11,6 @@ public class Regression {
     private final Sum sum = new Sum ( );
     private final ImportData importData = new ImportData ( );
 
-
     public Regression(DataReaderFromFile dataReader) {
         this.dataReader = dataReader;
     }
@@ -19,7 +18,6 @@ public class Regression {
     public Regression(DataReadFromExcel dataReaderExcel) {
         this.dataReaderExcel = dataReaderExcel;
     }
-
 
     public void addPointToList(Points points) {
         importData.addPointToList ( points , dataReader );
@@ -80,7 +78,6 @@ public class Regression {
         return points.list.get ( i ).getY ( )
                 - (points.list.get ( i ).getX ( ) * slope ( points ) + intercept ( points ));
     }
-
 
     public void show(Points points) {
         String slope = String.format ( "%.4f" , slope ( points ) );
