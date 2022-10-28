@@ -1,5 +1,5 @@
 # Linear-Regression
-This program read from txt or excel file and calculate basic parameters of linear regresion.
+This program read from txt or Excel file and calculate basic parameters of linear regresion.
 ## Built With
 - Java
 
