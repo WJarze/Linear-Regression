@@ -48,28 +48,37 @@ public class Regression {
     public double avgY(Points points) {
         return sum.getAvgY ( points );
     }
+
     public double avgX(Points points) {
         return sum.getAvgX ( points );
     }
 
     private double slope(Points points) {
-        return (((sumY ( points )) * avgX( points)) - sumXY ( points ))
-                / (((sumX ( points ) * avgX( points))) - sumX2 ( points ));
+        return (((sumY ( points )) * avgX ( points )) - sumXY ( points ))
+                / (((sumX ( points ) * avgX ( points ))) - sumX2 ( points ));
     }
 
     private double intercept(Points points) {
-        return avgY ( points ) - slope ( points ) * avgX( points);
+        return avgY ( points ) - slope ( points ) * avgX ( points );
     }
 
     private double getR2(Points points) {
         double num = 0;
         double den = 0;
         for (int i = 0; i < points.list.size ( ); i++) {
-            num += Math.pow ( (points.list.get ( i ).getY ( )
-                    - (points.list.get ( i ).getX ( ) * slope ( points ) + intercept ( points ))) , 2 );
-            den += Math.pow ( (points.list.get ( i ).getY ( ) - avgY ( points )) , 2 );
+            num += Math.pow ( getNum ( points , i ) , 2 );
+            den += Math.pow ( getDen ( points , i ) , 2 );
         }
         return 1 - (num / den);
+    }
+
+    private double getDen(Points points , int i) {
+        return points.list.get ( i ).getY ( ) - avgY ( points );
+    }
+
+    private double getNum(Points points , int i) {
+        return points.list.get ( i ).getY ( )
+                - (points.list.get ( i ).getX ( ) * slope ( points ) + intercept ( points ));
     }
 
 
